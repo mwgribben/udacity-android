@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">App Portfolio</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="spotify_button">Spotify Streamer</string>
+    <string name="scores_button">Scores App</string>
+    <string name="library_button">Library App</string>
+    <string name="bigger_button">Build it Bigger</string>
+    <string name="xyz_button">XYZ Reader</string>
+    <string name="capstone_button">Capstone: My Own App</string>
+    <string name="portfolio_title">Gribben\'s App Portfolio</string>
+</resources>

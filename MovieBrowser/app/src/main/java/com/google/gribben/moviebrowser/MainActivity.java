@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -39,7 +41,8 @@ import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends Activity
-    implements AdapterView.OnItemClickListener {
+    implements AdapterView.OnItemClickListener,
+    AdapterView.OnItemSelectedListener {
     private String api_key = "de5f1d0c1639b0481cd6b3b3f9af0efd";
     List<movie> movieList = new ArrayList<movie>();
     List<String> posters = new ArrayList<String>();
@@ -49,12 +52,13 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getMovies();
-
         Spinner spinner = (Spinner) findViewById(R.id.sortSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(),
                 R.array.sort_array,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+        Log.d("GribTracking", "onCreate");
     }
 
     public void getMovies () {
@@ -97,6 +101,7 @@ public class MainActivity extends Activity
                                 );
                                 posters.add(result.getString("poster_path"));
                             }
+                            Log.d("GribTracking", "getmovies");
                             GridView g = (GridView) findViewById(R.id.posterGrid);
                             g.setAdapter(new PosterAdapter(MainActivity.this, posters));
                             g.setOnItemClickListener(MainActivity.this);
@@ -148,43 +153,54 @@ public class MainActivity extends Activity
         alertDialog.show();
     }
 
-    public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
-        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-            switch (pos) {
-                case 0:
-                    Collections.sort(movieList, new Comparator<movie>() {
-                        @Override
-                        public int compare(movie m1, movie m2) {
-                            return (int) Math.ceil(m2.popularity - m1.popularity);
-                        }
+    public void sendToast(String toastString) {
+        Context context = getApplicationContext();
+        Toast toast = Toast.makeText(context, toastString, Toast.LENGTH_SHORT);
+        toast.show();
+    }
 
-                    });
-                    break;
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        Log.d("GribTracking","ItemSelected");
+        switch (pos) {
+            case 0:
+                sendToast("Pop");
+                Collections.sort(movieList, new Comparator<movie>() {
+                    @Override
+                    public int compare(movie m1, movie m2) {
+                        return (int) Math.ceil(m2.popularity - m1.popularity);
+                    }
 
-                case 1:
-                    Collections.sort(movieList, new Comparator<movie>() {
-                        @Override
-                        public int compare(movie m1, movie m2) {
-                            return (int) Math.ceil(m2.vote - m1.vote);
-                        }
+                });
+                posters.clear();
+                for (movie obj : movieList) {
+                    posters.add(obj.poster);
+                }
+                break;
 
-                    });
-                    break;
-            }
+            case 1:
+                sendToast("Rating");
+                Collections.sort(movieList, new Comparator<movie>() {
+                    @Override
+                    public int compare(movie m1, movie m2) {
+                        return (int) Math.ceil(m2.vote - m1.vote);
+                    }
 
-            posters.clear();
-            for (movie obj : movieList) {
-                posters.add(obj.poster);
-            }
-            GridView g = (GridView) findViewById(R.id.posterGrid);
-            g.getAdapter().notify();
-
-
+                });
+                posters.clear();
+                for (movie obj : movieList) {
+                    posters.add(obj.poster);
+                }
+                break;
         }
-
-        public void onNothingSelected(AdapterView<?> parent) {
-
+        GridView g = (GridView) findViewById(R.id.posterGrid);
+        Adapter adap = g.getAdapter();
+        synchronized (adap) {
+            adap.notify();
         }
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        sendToast("Nout");
     }
 
     @Override

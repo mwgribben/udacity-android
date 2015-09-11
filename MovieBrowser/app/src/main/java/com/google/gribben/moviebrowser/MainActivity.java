@@ -2,6 +2,7 @@ package com.google.gribben.moviebrowser;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.media.Image;
@@ -34,6 +35,7 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
@@ -121,25 +123,6 @@ public class MainActivity extends Activity
         VolleyApplication.getInstance().getRequestQueue().add(request);
     }
 
-    public class movie {
-        public String name;
-        public double vote;
-        public double popularity;
-        public String overview;
-        public String poster;
-        public Calendar release;
-
-        public movie(String name, double vote, double pop, String overview, String poster, String release) {
-            this.name=name;
-            this.vote=vote;
-            this.popularity=pop;
-            this.overview=overview;
-            this.poster=poster;
-            //this.release = release;
-        }
-
-    }
-
     public void raiseError(String errorString) {
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle("Error");
@@ -163,7 +146,6 @@ public class MainActivity extends Activity
         Log.d("GribTracking","ItemSelected");
         switch (pos) {
             case 0:
-                sendToast("Pop");
                 Collections.sort(movieList, new Comparator<movie>() {
                     @Override
                     public int compare(movie m1, movie m2) {
@@ -175,10 +157,10 @@ public class MainActivity extends Activity
                 for (movie obj : movieList) {
                     posters.add(obj.poster);
                 }
+                sendToast(movieList.get(0).name);
                 break;
 
             case 1:
-                sendToast("Rating");
                 Collections.sort(movieList, new Comparator<movie>() {
                     @Override
                     public int compare(movie m1, movie m2) {
@@ -190,13 +172,13 @@ public class MainActivity extends Activity
                 for (movie obj : movieList) {
                     posters.add(obj.poster);
                 }
+                sendToast(movieList.get(0).name);
                 break;
         }
         GridView g = (GridView) findViewById(R.id.posterGrid);
-        Adapter adap = g.getAdapter();
-        synchronized (adap) {
-            adap.notify();
-        }
+        PosterAdapter adap = (PosterAdapter) g.getAdapter();
+        adap.notifyDataSetChanged();
+        g.invalidateViews();
     }
 
     public void onNothingSelected(AdapterView<?> parent) {

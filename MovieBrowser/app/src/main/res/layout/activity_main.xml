@@ -10,7 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/sortSpinner"
-        android:spinnerMode="dropdown" />
+        android:spinnerMode="dropdown"
+        android:layout_gravity="right"
+        android:layout_marginBottom="10dp" />
 
     <GridView
         android:layout_width="match_parent"

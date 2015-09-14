@@ -8,4 +8,5 @@
         <item>Popularity</item>
         <item>User Rating</item>
     </string-array>
+    <string name="title_activity_details">DetailsActivity</string>
 </resources>

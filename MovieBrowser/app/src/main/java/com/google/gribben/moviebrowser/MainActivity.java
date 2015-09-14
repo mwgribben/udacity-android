@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -157,7 +158,6 @@ public class MainActivity extends Activity
                 for (movie obj : movieList) {
                     posters.add(obj.poster);
                 }
-                sendToast(movieList.get(0).name);
                 break;
 
             case 1:
@@ -172,7 +172,6 @@ public class MainActivity extends Activity
                 for (movie obj : movieList) {
                     posters.add(obj.poster);
                 }
-                sendToast(movieList.get(0).name);
                 break;
         }
         GridView g = (GridView) findViewById(R.id.posterGrid);
@@ -209,6 +208,15 @@ public class MainActivity extends Activity
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-        raiseError("Click");
+        Intent intent = new Intent(getApplicationContext(),DetailsActivity.class);
+        Bundle data = new Bundle();
+        movie select = movieList.get(position);
+        data.putString("poster","http://image.tmdb.org/t/p/w500"+select.poster);
+        data.putString("title",select.name);
+        data.putString("rating",Double.toString(select.vote));
+        data.putString("synopsis",select.overview);
+        data.putString("release", "TODO: DATE");
+        intent.putExtras(data);
+        startActivity(intent);
     }
 }

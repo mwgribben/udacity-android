@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sortSpinner"
+        android:spinnerMode="dropdown"
+        android:layout_gravity="right"
+        android:layout_marginBottom="10dp" />
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/posterGrid"
+        android:numColumns="auto_fit"
+        android:horizontalSpacing="10dip"
+        android:verticalSpacing="10dip"
+        android:verticalScrollbarPosition="defaultPosition"
+        />
+
+
+</LinearLayout>
+<!-- From: file:/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/src/main/res/layout/activity_main.xml -->

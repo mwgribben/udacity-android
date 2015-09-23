@@ -26,38 +26,16 @@ public class DetailsActivity extends Activity {
         String release = data.getString("release");
 
         ImageView posterView = (ImageView) findViewById(R.id.detailPoster);
-        Picasso.with(getApplicationContext()).load("http://image.tmdb.org/t/p/w500" + poster).into(posterView);
+        Picasso.with(getApplicationContext()).load("http://image.tmdb.org/t/p/w500" + poster).error(R.drawable.no_poster).into(posterView);
         TextView titleView = (TextView) findViewById(R.id.detailTitle);
         TextView ratingView = (TextView) findViewById(R.id.detailRating);
         TextView releaseView = (TextView) findViewById(R.id.detailRelease);
         TextView synopsisView = (TextView) findViewById(R.id.detailSynopsis);
 
         titleView.setText(title);
-        ratingView.setText(rating);
-        releaseView.setText(release);
+        ratingView.setText("User Rating: " +rating + "/10");
+        releaseView.setText("Release Date: " +release);
         synopsisView.setText(synopsis);
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_details, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,6 +62,9 @@ public class MainActivity extends Activity
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+        GridView g = (GridView) findViewById(R.id.posterGrid);
+        g.setAdapter(new PosterAdapter(MainActivity.this, movieList));
+        g.setOnItemClickListener(MainActivity.this);
         Log.d("GribTracking", "onCreate");
     }
 
@@ -103,11 +107,13 @@ public class MainActivity extends Activity
                                         )
                                 );
                                 posters.add(result.getString("poster_path"));
+                                GridView g = (GridView) findViewById(R.id.posterGrid);
+                                PosterAdapter adap = (PosterAdapter) g.getAdapter();
+                                adap.notifyDataSetChanged();
+                                g.invalidateViews();
                             }
                             Log.d("GribTracking", "getmovies");
-                            GridView g = (GridView) findViewById(R.id.posterGrid);
-                            g.setAdapter(new PosterAdapter(MainActivity.this, posters));
-                            g.setOnItemClickListener(MainActivity.this);
+
 
                         } catch (JSONException e) {
                             raiseError(e.toString());
@@ -137,6 +143,8 @@ public class MainActivity extends Activity
         alertDialog.show();
     }
 
+
+
     public void sendToast(String toastString) {
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, toastString, Toast.LENGTH_SHORT);
@@ -150,7 +158,7 @@ public class MainActivity extends Activity
                 Collections.sort(movieList, new Comparator<movie>() {
                     @Override
                     public int compare(movie m1, movie m2) {
-                        return (int) Math.ceil(m2.popularity - m1.popularity);
+                        return (int) (10*m2.popularity - 10*m1.popularity);
                     }
 
                 });
@@ -164,7 +172,7 @@ public class MainActivity extends Activity
                 Collections.sort(movieList, new Comparator<movie>() {
                     @Override
                     public int compare(movie m1, movie m2) {
-                        return (int) Math.ceil(m2.vote - m1.vote);
+                        return (int) (10*m2.vote - 10*m1.vote);
                     }
 
                 });
@@ -215,7 +223,7 @@ public class MainActivity extends Activity
         data.putString("title",select.name);
         data.putString("rating",Double.toString(select.vote));
         data.putString("synopsis",select.overview);
-        data.putString("release", "TODO: DATE");
+        data.putString("release", select.getRelease());
         intent.putExtras(data);
         startActivity(intent);
     }

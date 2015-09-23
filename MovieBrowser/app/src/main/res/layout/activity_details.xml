@@ -24,7 +24,8 @@
         android:text="Title"
         android:id="@+id/detailTitle"
         android:layout_alignTop="@id/detailPoster"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@id/detailPoster"
+        android:layout_marginLeft="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,6 +34,7 @@
         android:id="@+id/detailSynopsis"
         android:layout_alignLeft="@id/detailPoster"
         android:layout_below="@id/detailPoster"
+        android:layout_marginTop="10dp"
         />
 
     <TextView

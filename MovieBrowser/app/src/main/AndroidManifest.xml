@@ -21,7 +21,7 @@
         </activity>
         <activity
             android:name=".DetailsActivity"
-            android:label="@string/title_activity_details" >
+            android:label="Movie Info" >
         </activity>
     </application>
 

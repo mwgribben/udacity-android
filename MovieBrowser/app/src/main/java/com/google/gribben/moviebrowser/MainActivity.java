@@ -44,7 +44,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-public class MainActivity extends Activity
+public class MainActivity extends AppCompatActivity
     implements AdapterView.OnItemClickListener,
     AdapterView.OnItemSelectedListener {
     private String api_key = "de5f1d0c1639b0481cd6b3b3f9af0efd";
@@ -57,7 +57,7 @@ public class MainActivity extends Activity
         setContentView(R.layout.activity_main);
         getMovies();
         Spinner spinner = (Spinner) findViewById(R.id.sortSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(),
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.sort_array,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -110,7 +110,6 @@ public class MainActivity extends Activity
                                 GridView g = (GridView) findViewById(R.id.posterGrid);
                                 PosterAdapter adap = (PosterAdapter) g.getAdapter();
                                 adap.notifyDataSetChanged();
-                                g.invalidateViews();
                             }
                             Log.d("GribTracking", "getmovies");
 
@@ -190,28 +189,6 @@ public class MainActivity extends Activity
 
     public void onNothingSelected(AdapterView<?> parent) {
         sendToast("Nout");
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

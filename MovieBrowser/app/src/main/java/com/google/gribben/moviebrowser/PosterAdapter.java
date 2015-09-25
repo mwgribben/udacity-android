@@ -57,25 +57,33 @@ public class PosterAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+        ImageView imageView;
+
+        if(convertView==null) {
+            imageView = new ImageView(mContext);
+            WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+            Display display = wm.getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            int width = (int) Math.floor(size.x/2.5);
+            int height = (int) Math.floor(width * 1.5185);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, height);
+            imageView.setLayoutParams(layoutParams);
+
+        } else {
+            imageView = (ImageView) convertView;
+        }
         movie current = movieList.get(position);
-        WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        ImageView imageView = new ImageView(mContext);
-        Drawable placeholder = new BitmapDrawable(TitleToPoster(current.name));
-        Picasso.with(mContext).load("http://image.tmdb.org/t/p/w500"+current.poster).error(placeholder).into(imageView);
-        int width = (int) Math.floor(size.x/2.5);
-        int height = (int) Math.floor(width * 1.5185);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, height);
-        imageView.setLayoutParams(layoutParams);
+        Picasso.with(mContext).load("http://image.tmdb.org/t/p/w500"+current.poster).error(new BitmapDrawable(TitleToPoster(current.name))).into(imageView);
+
         return imageView;
     }
 
     private Bitmap TitleToPoster(String text) {
         Paint paint = new Paint();
         paint.setTextSize(100);
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.BLACK);
         paint.setTextAlign(Paint.Align.LEFT);
         float baseline = -paint.ascent(); // ascent() is negative
         int width = (int) (paint.measureText(text) + 0.5f); // round

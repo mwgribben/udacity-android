@@ -52,4 +52,14 @@
         android:id="@+id/detailRelease"
         android:layout_alignLeft="@id/detailRating"
         android:layout_below="@id/detailRating"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/trailerList"
+        android:layout_below="@+id/detailSynopsis"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></ListView>
+
+
 </RelativeLayout>

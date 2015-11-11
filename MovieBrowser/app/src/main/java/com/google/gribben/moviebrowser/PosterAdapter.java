@@ -32,8 +32,6 @@ public class PosterAdapter extends BaseAdapter {
     private Context mContext;
 
     List<movie> movieList = new ArrayList<movie>();
-    List<String> posters = new ArrayList<String>();
-    List<String> titles = new ArrayList<String>();
 
     public PosterAdapter(Context c, List<movie> m) {
         mContext=c;

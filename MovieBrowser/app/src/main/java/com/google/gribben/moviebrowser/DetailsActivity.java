@@ -6,10 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DetailsActivity extends Activity {
 
@@ -19,23 +24,27 @@ public class DetailsActivity extends Activity {
         setContentView(R.layout.activity_details);
 
         Bundle data = getIntent().getExtras();
-        String poster = data.getString("poster");
-        String title = data.getString("title");
-        String rating = data.getString("rating");
-        String synopsis = data.getString("synopsis");
-        String release = data.getString("release");
+
+        movie select = (movie) data.getParcelable("movie");
 
         ImageView posterView = (ImageView) findViewById(R.id.detailPoster);
-        Picasso.with(getApplicationContext()).load("http://image.tmdb.org/t/p/w500" + poster).error(R.drawable.no_poster).into(posterView);
+        Picasso.with(getApplicationContext())
+                .load("http://image.tmdb.org/t/p/w500" + select.poster)
+                .error(R.drawable.no_poster).into(posterView);
         TextView titleView = (TextView) findViewById(R.id.detailTitle);
         TextView ratingView = (TextView) findViewById(R.id.detailRating);
         TextView releaseView = (TextView) findViewById(R.id.detailRelease);
         TextView synopsisView = (TextView) findViewById(R.id.detailSynopsis);
 
-        titleView.setText(title);
-        ratingView.setText("User Rating: " +rating + "/10");
-        releaseView.setText("Release Date: " +release);
-        synopsisView.setText(synopsis);
+        titleView.setText(select.name);
+        ratingView.setText("User Rating: " +select.vote + "/10");
+        releaseView.setText("Release Date: " +select.release);
+        synopsisView.setText(select.overview);
 
+        movieGetter m = new movieGetter(this);
+
+        trailerAdapter itemsAdapter = new trailerAdapter(this,m.getTrailers(select.id));
+        ListView listView = (ListView) findViewById(R.id.trailerList);
+        listView.setAdapter(itemsAdapter);
     }
 }

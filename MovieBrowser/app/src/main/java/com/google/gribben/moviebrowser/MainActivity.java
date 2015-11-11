@@ -24,16 +24,13 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.squareup.picasso.Picasso;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,7 +44,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
     implements AdapterView.OnItemClickListener,
     AdapterView.OnItemSelectedListener {
-    private String api_key = "de5f1d0c1639b0481cd6b3b3f9af0efd";
     List<movie> movieList = new ArrayList<movie>();
     List<String> posters = new ArrayList<String>();
 
@@ -55,93 +51,26 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getMovies();
+        movieGetter mg = new movieGetter(this);
+        movieList = mg.getMovies();
+        for (movie obj : movieList) {
+            posters.add(obj.poster);
+        }
+        GridView g = (GridView) findViewById(R.id.posterGrid);
+        PosterAdapter adap = new PosterAdapter(MainActivity.this, movieList);
+        g.setAdapter(adap);
+        g.setOnItemClickListener(MainActivity.this);
+        adap.notifyDataSetChanged();
+
         Spinner spinner = (Spinner) findViewById(R.id.sortSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.sort_array,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        GridView g = (GridView) findViewById(R.id.posterGrid);
-        g.setAdapter(new PosterAdapter(MainActivity.this, movieList));
-        g.setOnItemClickListener(MainActivity.this);
+
         Log.d("GribTracking", "onCreate");
     }
-
-    public void getMovies () {
-
-        Calendar today = Calendar.getInstance();
-
-        Calendar end = (Calendar) today.clone();
-        end.add(Calendar.MONTH, 1);
-        Calendar start = (Calendar) today.clone();
-        start.add(Calendar.MONTH, -1);
-
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-
-        JsonObjectRequest request = new JsonObjectRequest(
-                "http://api.themoviedb.org/3/discover/movie?api_key="
-                        +api_key
-                        +"&primary_release_date.gte="
-                        +df.format(start.getTime())
-                        +"&primary_release_date.lte="
-                        +df.format(end.getTime())
-                        +"&sort_by=popularity_desc",
-                null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONArray results;
-                            results = response.getJSONArray("results");
-                            for (int i = 0; i < results.length(); i++) {
-                                JSONObject result = results.getJSONObject(i);
-                                movieList.add(
-                                        new movie(
-                                                result.getString("original_title"),
-                                                result.getDouble("vote_average"),
-                                                result.getDouble("popularity"),
-                                                result.getString("overview"),
-                                                result.getString("poster_path"),
-                                                result.getString("release_date")
-                                        )
-                                );
-                                posters.add(result.getString("poster_path"));
-                                GridView g = (GridView) findViewById(R.id.posterGrid);
-                                PosterAdapter adap = (PosterAdapter) g.getAdapter();
-                                adap.notifyDataSetChanged();
-                            }
-                            Log.d("GribTracking", "getmovies");
-
-
-                        } catch (JSONException e) {
-                            raiseError(e.toString());
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        raiseError(error.toString());
-                    }
-                });
-
-        VolleyApplication.getInstance().getRequestQueue().add(request);
-    }
-
-    public void raiseError(String errorString) {
-        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-        alertDialog.setTitle("Error");
-        alertDialog.setMessage(errorString);
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
-    }
-
 
 
     public void sendToast(String toastString) {
@@ -194,14 +123,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
         Intent intent = new Intent(getApplicationContext(),DetailsActivity.class);
-        Bundle data = new Bundle();
         movie select = movieList.get(position);
-        data.putString("poster","http://image.tmdb.org/t/p/w500"+select.poster);
-        data.putString("title",select.name);
-        data.putString("rating",Double.toString(select.vote));
-        data.putString("synopsis",select.overview);
-        data.putString("release", select.getRelease());
-        intent.putExtras(data);
+        intent.putExtra("movie",select);
         startActivity(intent);
     }
 }

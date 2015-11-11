@@ -2,39 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/usr/local/google/home/gribben/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jar="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-ce7087393b76d8bf86ed1c968c6f3d449bc947e7.jar" />
-    </item>
-    <item
-        jar="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/pre-dexed/debug/classes-62e1f3e88654f8d4891dc7a3c205053bc6eae295.jar" />
-    </item>
-    <item
-        jar="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
-        <dex dex="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/pre-dexed/debug/classes-1acb8210c1483228867968dd60ce2e9a03045dfe.jar" />
-    </item>
-    <item
-        jar="/usr/local/google/home/gribben/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.1/support-annotations-22.2.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.1-676386b213a90794336823faf13ded9eddc2ca01.jar" />
-    </item>
-    <item
-        jar="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/libs/internal_impl-22.2.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.1-e8694176f10d2fbbcb0b715e8d8e840d38c63147.jar" />
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/pre-dexed/debug/classes-ab01d7aefcb6e83860f188698ca8c633ab107467.jar" />
     </item>
     <item
         jar="/usr/local/google/home/gribben/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.19/a8f23f65fc1e522ee4a1a697ee569901a46741fa/library-1.0.19.jar"
@@ -42,6 +14,34 @@
         revision="22.0.1"
         sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
         <dex dex="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/pre-dexed/debug/library-1.0.19-a8738d2d8f45ff6c000a95f8d30c2080ec82ec2c.jar" />
+    </item>
+    <item
+        jar="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/pre-dexed/debug/classes-472334d9b9792f8813f2d65baa523fce28d5b509.jar" />
+    </item>
+    <item
+        jar="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.0-ed079f2a4d89ce73cc9a38e35c5ca7c405233f20.jar" />
+    </item>
+    <item
+        jar="/usr/local/google/home/gribben/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-ce7087393b76d8bf86ed1c968c6f3d449bc947e7.jar" />
+    </item>
+    <item
+        jar="/usr/local/google/home/gribben/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.0/support-annotations-23.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="/usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.0-7003380f81751f189c588faa47eada08bcb4a14f.jar" />
     </item>
 
 </items>

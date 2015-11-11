@@ -19,8 +19,8 @@ ADDED from /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBro
 		ADDED from /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/src/main/AndroidManifest.xml:5:22-64
 application
 ADDED from /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/src/main/AndroidManifest.xml:7:5-26:19
-MERGED from [com.android.support:appcompat-v7:22.2.1] /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:22.2.1] /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.0.0] /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.0.0] /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/src/main/AndroidManifest.xml:11:9-41
 	android:allowBackup
@@ -55,8 +55,8 @@ ADDED from /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBro
 		ADDED from /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/src/main/AndroidManifest.xml:23:13-44
 uses-sdk
 INJECTED from /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:appcompat-v7:22.2.1] /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:22.2.1] /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.0.0] /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.0.0] /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
 		INJECTED from /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/src/main/AndroidManifest.xml
 		INJECTED from /usr/local/google/home/gribben/AndroidStudioProjects/Udacity/MovieBrowser/app/src/main/AndroidManifest.xml
